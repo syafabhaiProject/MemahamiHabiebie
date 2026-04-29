@@ -77,12 +77,24 @@ body > * {
   letter-spacing: 2px;
 }
 
+.hero .kelas-badge {
+  display: inline-block;
+  background: rgba(0, 200, 255, 0.2);
+  border: 1px solid rgba(0, 200, 255, 0.4);
+  padding: 10px 25px;
+  border-radius: 20px;
+  font-size: 16px;
+  color: #00ddff;
+  margin-bottom: 15px;
+  backdrop-filter: blur(5px);
+}
+
 .hero .anggota-badge {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
-  margin-top: 18px;
+  margin-top: 5px;
 }
 
 .hero .anggota-badge span {
@@ -447,6 +459,65 @@ canvas {
   box-shadow: 0 0 10px #00ccff;
 }
 
+/* SUMBER CARD */
+.sumber-card {
+  background: rgba(0, 15, 40, 0.5);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  padding: 25px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.sumber-card h2 {
+  font-size: 20px;
+  color: #00ddff;
+  margin-bottom: 15px;
+  border-bottom: 2px solid rgba(0, 180, 255, 0.3);
+  padding-bottom: 10px;
+}
+
+.sumber-card ol {
+  padding-left: 20px;
+  list-style: none;
+  counter-reset: sumber;
+}
+
+.sumber-card ol li {
+  padding: 10px 0;
+  line-height: 1.7;
+  color: #e0e0e0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  position: relative;
+  padding-left: 30px;
+}
+
+.sumber-card ol li:last-child {
+  border-bottom: none;
+}
+
+.sumber-card ol li::before {
+  counter-increment: sumber;
+  content: "[" counter(sumber) "]";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  color: #ffcc00;
+  font-weight: bold;
+}
+
+.sumber-card ol li a {
+  color: #00ddff;
+  text-decoration: none;
+  word-break: break-all;
+  transition: all 0.3s;
+}
+
+.sumber-card ol li a:hover {
+  color: #ffcc00;
+  text-decoration: underline;
+}
+
 /* FOOTER */
 footer {
   text-align: center;
@@ -489,15 +560,13 @@ footer .kelompok-name {
   <div class="icon">🛩️</div>
   <h1>REVOLUSI STRUKTUR PESAWAT</h1>
   <div class="subtitle">WARISAN ABADI B.J. HABIBIE</div>
+  <div class="kelas-badge">Kelas 9C</div>
   <div class="anggota-badge">
     <span>👤 Thufail Khairul Fatihin</span>
     <span>👤 Karim Abdul Majid</span>
     <span>👤 Hanif Abdurrahman Syukur</span>
     <span>👤 Arya Al Fatih</span>
     <span>👤 Firzan Nashih Al Fathan</span>
-  </div>
-  <div style="margin-top: 12px;">
-    <span class="badge-info">Kelas 9C</span>
   </div>
 </div>
 
@@ -507,19 +576,19 @@ footer .kelompok-name {
   <!-- ==================== SLIDE 1: BIOGRAFI - THUFAIL ==================== -->
   <div class="card">
     <div class="tag-pembicara">
-      <span class="dot"></span> Disampaikan oleh: Thufail Khairul Fatihin
+      <span class="dot"></span> Disampaikan oleh: Thufail Khairul Fatihin (Sang Pembuka Sejarah)
     </div>
     <h2>📖 Biografi Lengkap B.J. Habibie</h2>
-    
+
     <!-- FOTO HABIBIE -->
     <div class="foto-habibie-container">
       <img src="habibie.jpg" alt="B.J. Habibie" class="foto-habibie" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
       <div class="foto-caption">Prof. Dr. Ing. H. Bacharuddin Jusuf Habibie (1936–2019)</div>
       <p id="foto-error" style="display: none; color: #ff8888; font-size: 13px; margin-top: 8px;">
-        ⚠️ Foto tidak ditemukan. Pastikan file <strong>habibie.png</strong> ada di folder yang sama dengan file HTML ini.
+        ⚠️ Foto tidak ditemukan. Pastikan file <strong>habibie.jpg</strong> ada di folder yang sama dengan file HTML ini.
       </p>
     </div>
-    
+
     <h3>📅 Masa Kecil & Pendidikan Awal</h3>
     <div class="timeline-item">
       <div class="timeline-dot"></div>
@@ -621,7 +690,7 @@ footer .kelompok-name {
       <span class="dot"></span> Disampaikan oleh: Karim Abdul Majid
     </div>
     <h2>⚠️ Latar Belakang: Masalah Retakan pada Struktur Pesawat</h2>
-    
+
     <h3>🔄 Apa Itu Kelelahan Material (Material Fatigue)?</h3>
     <p>
       <strong>Kelelahan material (fatigue)</strong> adalah fenomena di mana material logam mengalami kerusakan progresif akibat beban siklikal (berulang) yang besarnya <strong>jauh di bawah kekuatan tarik maksimum</strong> material tersebut. Artinya, meskipun tekanan yang diterima tergolong "kecil" — jika terjadi berulang-ulang ribuan hingga jutaan kali — material tersebut akhirnya bisa retak dan patah.
@@ -685,10 +754,10 @@ footer .kelompok-name {
   <!-- ==================== SLIDE 3: SOLUSI & RUMUS - HANIF ==================== -->
   <div class="card">
     <div class="tag-pembicara">
-      <span class="dot"></span> Disampaikan oleh: Hanif Abdurrahman Syukur
+      <span class="dot"></span> Disampaikan oleh: Hanif Abdurrahman Syukur (Sang Juru Rumus & Simulasi)
     </div>
     <h2>💡 Solusi Revolusioner: Teori Crack Progression & Rumus Matematis</h2>
-    
+
     <h3>🧠 Pemikiran Dasar Habibie</h3>
     <p>
       Sebelum Habibie, pendekatan yang dominan dalam industri penerbangan adalah <strong>"Safe-Life"</strong> — yaitu mendesain komponen agar tidak mengalami retakan sama sekali selama masa pakainya. Pendekatan ini sangat konservatif dan boros, karena komponen harus diganti jauh sebelum waktunya, meskipun sebenarnya masih aman.
@@ -805,7 +874,7 @@ footer .kelompok-name {
       <span class="dot"></span> Disampaikan oleh: Arya Al Fatih
     </div>
     <h2>🌍 Dampak Revolusioner bagi Dunia Penerbangan</h2>
-    
+
     <h3>1. Keselamatan Penerbangan Meningkat Drastis</h3>
     <p>
       Sebelum metode Habibie diadopsi, inspeksi pesawat dilakukan berdasarkan <strong>perkiraan waktu</strong> yang sangat konservatif — setiap beberapa ratus jam terbang, komponen diganti begitu saja. Ini tidak efisien dan kadang tetap berisiko karena retakan bisa tumbuh lebih cepat dari perkiraan.
@@ -851,10 +920,10 @@ footer .kelompok-name {
   <!-- ==================== SLIDE 5: DAMPAK 2 - FIRZAN ==================== -->
   <div class="card">
     <div class="tag-pembicara">
-      <span class="dot"></span> Disampaikan oleh: Firzan Al Nashih
+      <span class="dot"></span> Disampaikan oleh: Firzan Nashih Al Fathan
     </div>
     <h2>🏆 Warisan Abadi & Inspirasi untuk Indonesia</h2>
-    
+
     <h3>🇮🇩 Bukti Nyata: Pesawat N-250 Gatotkaca</h3>
     <p>
       Puncak dari seluruh pengetahuan dan pengalaman Habibie diwujudkan dalam proyek <strong>N-250 Gatotkaca</strong> — pesawat turboprop regional yang 100% dirancang, dihitung, dan dibuat oleh putra-putri Indonesia di bawah pimpinan Habibie di IPTN (Bandung).
@@ -900,6 +969,31 @@ footer .kelompok-name {
     <p>
       "Inti dari penemuan B.J. Habibie bukan hanya tentang retakan atau rumus matematika, tetapi tentang <strong>mengubah krisis menjadi peluang melalui ilmu pengetahuan</strong>. Beliau mengajarkan kita bahwa dengan perhitungan yang tepat, kita dapat memprediksi masa depan, mencegah bencana, dan membangun peradaban yang lebih maju."
     </p>
+  </div>
+
+  <!-- ==================== SUMBER MATERI ==================== -->
+  <div class="sumber-card">
+    <h2>📚 Sumber Materi</h2>
+    <ol>
+      <li>
+        <strong>Koran Sulindo</strong> — "B.J. Habibie dan Crack Progression Theory"<br>
+        <a href="https://www.google.com/amp/s/koransulindo.com/bj-habibie-dan-crack-progression-theory/amp/" target="_blank" rel="noopener">
+          https://koransulindo.com/bj-habibie-dan-crack-progression-theory/
+        </a>
+      </li>
+      <li>
+        <strong>DetikEdu</strong> — "Alasan Mengapa B.J. Habibie Dijuluki Mr. Crack, Berkaitan dengan Pesawat"<br>
+        <a href="https://www.detik.com/edu/detikpedia/d-5721516/alasan-mengapa-bj-habibie-dijuluki-mr-crack-berkaitan-dengan-pesawat" target="_blank" rel="noopener">
+          https://detik.com/edu/detikpedia/d-5721516/alasan-mengapa-bj-habibie-dijuluki-mr-crack
+        </a>
+      </li>
+      <li>
+        <strong>Wikipedia</strong> — "B.J. Habibie"<br>
+        <a href="https://id.wikipedia.org/wiki/B._J._Habibie" target="_blank" rel="noopener">
+          https://id.wikipedia.org/wiki/B._J._Habibie
+        </a>
+      </li>
+    </ol>
   </div>
 
 </main>
@@ -1060,7 +1154,7 @@ function drawGraph() {
   ctx.fillStyle = '#ff0044';
   ctx.font = 'bold 14px Roboto Slab';
   ctx.fillText('Kurva da/dN (Paris Law)', canvas.width / 2 + 50, 50);
-  
+
   // Garis batas kritis (a_cr)
   ctx.strokeStyle = '#ff8800';
   ctx.lineWidth = 2;
@@ -1070,11 +1164,11 @@ function drawGraph() {
   ctx.lineTo(canvas.width, canvas.height / 2 - 100);
   ctx.stroke();
   ctx.setLineDash([]);
-  
+
   ctx.fillStyle = '#ff8800';
   ctx.font = 'bold 13px Roboto Slab';
   ctx.fillText('a_cr (Retakan Kritis)', 12, canvas.height / 2 - 108);
-  
+
   // Keterangan
   ctx.fillStyle = '#666';
   ctx.font = '11px Roboto Slab';
