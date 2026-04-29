@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Revolusi Struktur Pesawat - B.J. Habibie | Kelompok 9C</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
 
 <style>
 * {
@@ -18,311 +19,513 @@ body {
   font-family: 'Roboto Slab', serif;
   background: url('biru.jpeg') repeat;
   background-size: cover;
+  background-attachment: fixed;
   color: white;
   min-height: 100vh;
 }
 
-/* HEADER */
-header {
-  background: rgba(0, 0, 0, 0.85);
-  padding: 30px 20px;
+/* OVERLAY AGAR TEXT TETAP TERBACA TAPI BACKGROUND TETAP KELIHATAN */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 10, 30, 0.55);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* SEMUA KONTEN DI ATAS OVERLAY */
+body > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* HEADER - TRANSPARAN DENGAN BLUR */
+.hero {
   text-align: center;
-  border-bottom: 3px solid #00aaff;
-}
-
-header h1 {
-  font-size: 28px;
+  padding: 40px 20px 30px;
+  background: rgba(0, 20, 50, 0.5);
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid rgba(0, 200, 255, 0.4);
   margin-bottom: 10px;
-  color: #00ccff;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
 }
 
-header .anggota {
+.hero .icon {
+  font-size: 60px;
+  margin-bottom: 10px;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+.hero h1 {
+  font-size: 32px;
+  font-family: 'Orbitron', sans-serif;
+  color: #00ddff;
+  text-shadow: 0 0 20px rgba(0, 200, 255, 0.6), 0 0 40px rgba(0, 150, 255, 0.3);
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+.hero .subtitle {
   font-size: 16px;
-  color: #ddd;
-  margin-top: 15px;
-  line-height: 1.8;
-}
-
-header .anggota span {
   color: #ffcc00;
-  font-weight: bold;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
 }
 
-/* KONTEN UTAMA */
+.hero .anggota-badge {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.hero .anggota-badge span {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 8px 18px;
+  border-radius: 25px;
+  font-size: 14px;
+  color: #ffffff;
+  transition: all 0.3s;
+}
+
+.hero .anggota-badge span:hover {
+  background: rgba(0, 200, 255, 0.3);
+  border-color: #00ccff;
+  box-shadow: 0 0 15px rgba(0, 200, 255, 0.4);
+  transform: translateY(-3px);
+}
+
+/* MAIN CONTAINER */
 main {
   max-width: 900px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 15px;
 }
 
-/* SLIDE */
-.slide {
-  background: rgba(0, 0, 0, 0.75);
-  border-radius: 15px;
+/* CARD STYLE - TRANSPARAN DENGAN BACKGROUND TERLIHAT */
+.card {
+  background: rgba(0, 15, 40, 0.5);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
   padding: 25px;
-  margin-bottom: 25px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin-bottom: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.3s;
+}
+
+.card:hover {
+  border-color: rgba(0, 200, 255, 0.4);
+  box-shadow: 0 8px 30px rgba(0, 150, 255, 0.15);
+}
+
+.card h2 {
+  font-size: 22px;
+  color: #00ddff;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 2px solid rgba(0, 180, 255, 0.3);
+  padding-bottom: 10px;
+}
+
+.card h3 {
+  font-size: 18px;
+  color: #ffbb33;
+  margin: 15px 0 8px;
+}
+
+.card p {
+  line-height: 1.9;
+  margin-bottom: 10px;
+  color: #e0e0e0;
+}
+
+.card ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.card ul li {
+  padding: 10px 0 10px 35px;
+  position: relative;
+  line-height: 1.7;
+  color: #e0e0e0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.card ul li:last-child {
+  border-bottom: none;
+}
+
+.card ul li::before {
+  content: "🚀";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  font-size: 16px;
+}
+
+/* TAG PEMBICARA - LEBIH STYLISH */
+.tag-pembicara {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, rgba(255, 200, 0, 0.25), rgba(255, 150, 0, 0.15));
+  border: 1px solid rgba(255, 200, 0, 0.5);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  color: #ffdd57;
+  margin-bottom: 15px;
   backdrop-filter: blur(5px);
 }
 
-.slide h2 {
-  font-size: 24px;
-  color: #00ccff;
-  margin-bottom: 15px;
-  border-bottom: 2px solid #00aaff;
-  padding-bottom: 8px;
+.tag-pembicara .dot {
+  width: 10px;
+  height: 10px;
+  background: #ffcc00;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #ffcc00;
+  animation: pulse 1.5s infinite;
 }
 
-.slide h3 {
-  font-size: 20px;
-  color: #ffcc00;
-  margin: 15px 0 10px;
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
 }
 
-.slide p {
-  line-height: 1.8;
-  margin-bottom: 12px;
-  text-align: justify;
-}
-
-.slide ul {
-  list-style: none;
-  padding-left: 5px;
-}
-
-.slide ul li {
-  padding: 8px 0 8px 30px;
-  position: relative;
-  line-height: 1.6;
-}
-
-.slide ul li::before {
-  content: "✈️";
-  position: absolute;
-  left: 0;
-  top: 8px;
-}
-
-.slide .pembicara {
+/* BADGE INFO */
+.badge-info {
   display: inline-block;
-  background: #00aaff;
-  color: #000;
-  padding: 5px 15px;
-  border-radius: 20px;
-  font-size: 14px;
-  font-weight: bold;
-  margin-bottom: 15px;
-}
-
-/* CANVAS CONTAINER */
-#container {
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 200, 255, 0.2);
+  border: 1px solid rgba(0, 200, 255, 0.4);
+  padding: 4px 12px;
   border-radius: 15px;
-  padding: 15px;
-  margin-bottom: 25px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 12px;
+  color: #00ddff;
+  margin-left: 5px;
 }
 
-#container h3 {
+/* CANVAS SECTION */
+.canvas-section {
+  background: rgba(0, 15, 40, 0.5);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.canvas-section h3 {
   text-align: center;
   color: #ffcc00;
-  margin-bottom: 10px;
-  font-size: 18px;
+  margin-bottom: 12px;
+  font-size: 17px;
 }
 
 canvas {
   width: 100%;
-  height: 400px;
-  background: white;
-  border-radius: 10px;
+  height: 380px;
+  background: #ffffff;
+  border-radius: 12px;
   touch-action: none;
   display: block;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
 }
 
 /* TOOLS */
-#tools {
+.tools-bar {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  padding: 15px;
-  background: rgba(0, 0, 0, 0.8);
-  border-radius: 10px;
+  padding: 12px;
+  background: rgba(0, 20, 50, 0.6);
+  backdrop-filter: blur(5px);
+  border-radius: 30px;
   justify-content: center;
-  margin-bottom: 25px;
+  margin-top: 12px;
 }
 
-#tools button {
-  padding: 10px 18px;
+.tools-bar button {
+  padding: 10px 16px;
   border-radius: 25px;
-  border: none;
+  border: 1px solid rgba(255,255,255,0.2);
   cursor: pointer;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 13px;
   transition: all 0.3s;
   font-family: 'Roboto Slab', serif;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  backdrop-filter: blur(3px);
 }
 
-#tools button:hover {
+.tools-bar button:hover {
   transform: scale(1.05);
-  box-shadow: 0 4px 15px rgba(0, 170, 255, 0.5);
+  box-shadow: 0 4px 20px rgba(0, 200, 255, 0.5);
+  border-color: #00ccff;
 }
 
-#tools button:nth-child(1) { background: #00ccff; color: #000; }
-#tools button:nth-child(2) { background: #ff6b6b; color: #fff; }
-#tools button:nth-child(4) { background: #ffcc00; color: #000; }
-#tools button:nth-child(5) { background: #00ff88; color: #000; }
-#tools button:nth-child(6) { background: #ff00ff; color: #fff; }
+.tools-bar button.pen-btn { background: rgba(0, 200, 255, 0.3); border-color: #00ccff; }
+.tools-bar button.erase-btn { background: rgba(255, 100, 100, 0.3); border-color: #ff5555; }
+.tools-bar button.clear-btn { background: rgba(255, 200, 0, 0.3); border-color: #ffcc00; }
+.tools-bar button.grid-btn { background: rgba(0, 255, 130, 0.3); border-color: #00ff88; }
+.tools-bar button.graph-btn { 
+  background: linear-gradient(135deg, rgba(255, 0, 200, 0.4), rgba(100, 0, 255, 0.4)); 
+  border-color: #ff00ff;
+  animation: glow-btn 2s infinite;
+}
 
-#tools input[type="color"] {
-  width: 50px;
+@keyframes glow-btn {
+  0%, 100% { box-shadow: 0 0 10px rgba(255, 0, 200, 0.4); }
+  50% { box-shadow: 0 0 25px rgba(255, 0, 200, 0.8); }
+}
+
+.tools-bar input[type="color"] {
+  width: 40px;
   height: 40px;
-  border-radius: 10px;
-  border: 2px solid #fff;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.4);
   cursor: pointer;
+  background: transparent;
 }
 
-/* KESIMPULAN */
-.kesimpulan {
-  background: rgba(0, 170, 255, 0.3);
-  border: 2px solid #00ccff;
-  border-radius: 15px;
+/* QUOTE BOX */
+.quote-box {
+  background: linear-gradient(135deg, rgba(0, 180, 255, 0.2), rgba(0, 100, 200, 0.1));
+  border: 2px solid rgba(0, 200, 255, 0.5);
+  border-radius: 20px;
   padding: 25px;
   text-align: center;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
+  backdrop-filter: blur(8px);
 }
 
-.kesimpulan p {
-  font-size: 18px;
+.quote-box .quote-icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.quote-box p {
+  font-size: 17px;
   font-style: italic;
-  line-height: 1.8;
+  line-height: 1.9;
+  color: #e8e8e8;
+}
+
+.quote-box strong {
+  color: #ffdd57;
+}
+
+/* TIMELINE */
+.timeline-item {
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+  padding: 8px 0;
+}
+
+.timeline-dot {
+  min-width: 12px;
+  height: 12px;
+  background: #00ccff;
+  border-radius: 50%;
+  margin-top: 6px;
+  box-shadow: 0 0 10px #00ccff;
 }
 
 /* FOOTER */
 footer {
-  background: rgba(0, 0, 0, 0.9);
   text-align: center;
-  padding: 15px;
-  border-top: 2px solid #00aaff;
+  padding: 20px;
+  background: rgba(0, 10, 30, 0.6);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(0, 200, 255, 0.3);
+  margin-top: 10px;
 }
 
 footer p {
   color: #aaa;
-  font-size: 14px;
+  font-size: 13px;
+}
+
+footer .kelompok-name {
+  color: #ffcc00;
+  font-weight: bold;
 }
 
 /* RESPONSIVE */
 @media (max-width: 600px) {
-  header h1 { font-size: 20px; }
-  .slide h2 { font-size: 19px; }
-  .slide h3 { font-size: 17px; }
-  canvas { height: 280px; }
-  #tools button { padding: 8px 12px; font-size: 12px; }
+  .hero h1 { font-size: 22px; }
+  .card h2 { font-size: 18px; }
+  .card h3 { font-size: 16px; }
+  canvas { height: 260px; }
+  .tools-bar button { padding: 8px 12px; font-size: 11px; }
+  .hero .anggota-badge { gap: 6px; }
+  .hero .anggota-badge span { padding: 6px 12px; font-size: 12px; }
 }
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
-<header>
-  <h1>🛩️ Revolusi Struktur Pesawat<br>oleh B.J. Habibie</h1>
-  <div class="anggota">
-    <strong>Kelompok 9C:</strong><br>
-    <span>Thufail Khairul Fatihin</span> | 
-    <span>Karim Abdul Majid</span> | 
-    <span>Hanif Abdurrahman Syukur</span><br>
-    <span>Arya Al Fatih</span> | 
-    <span>Firzan Al Nashih</span>
+<!-- HERO HEADER -->
+<div class="hero">
+  <div class="icon">🛩️</div>
+  <h1>REVOLUSI STRUKTUR PESAWAT</h1>
+  <div class="subtitle">WARISAN ABADI B.J. HABIBIE</div>
+  <div class="anggota-badge">
+    <span>👤 Thufail Khairul Fatihin</span>
+    <span>👤 Karim Abdul Majid</span>
+    <span>👤 Hanif Abdurrahman Syukur</span>
+    <span>👤 Arya Al Fatih</span>
+    <span>👤 Firzan Al Nashih</span>
   </div>
-</header>
+  <div style="margin-top: 12px;">
+    <span class="badge-info">Kelas 9C</span>
+  </div>
+</div>
 
 <!-- MAIN CONTENT -->
 <main>
 
-  <!-- SLIDE 1: BIOGRAFI -->
-  <div class="slide">
-    <span class="pembicara">🎤 Thufail Khairul Fatihin</span>
+  <!-- SLIDE 1: BIOGRAFI - THUFAIL -->
+  <div class="card">
+    <div class="tag-pembicara">
+      <span class="dot"></span> Disampaikan oleh: Thufail Khairul Fatihin
+    </div>
     <h2>📖 Biografi Singkat B.J. Habibie</h2>
-    <p><strong>Nama Lengkap:</strong> Prof. Dr. Ing. H. Bacharuddin Jusuf Habibie</p>
-    <p><strong>Lahir:</strong> Parepare, Sulawesi Selatan, 25 Juni 1936</p>
-    <p><strong>Pendidikan:</strong> Menempuh studi teknik penerbangan di RWTH Aachen University, Jerman. Meraih gelar Doktor (Dr. Ing.) dengan predikat <em>Summa Cum Laude</em>.</p>
-    <p><strong>Karier:</strong> Bekerja di Messerschmitt-Bölkow-Blohm (MBB) Jerman, lalu pulang ke Indonesia memimpin IPTN (kini PT Dirgantara Indonesia). Menjabat sebagai Menristek, Kepala BPPT, Wakil Presiden RI ke-7, dan Presiden RI ke-3.</p>
-    <p><strong>Julukan:</strong> "Bapak Teknologi Indonesia" — atas dedikasinya memajukan teknologi dan industri strategis dalam negeri.</p>
+    
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div>
+        <strong>Nama Lengkap:</strong> Prof. Dr. Ing. H. Bacharuddin Jusuf Habibie
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div>
+        <strong>Lahir:</strong> Parepare, Sulawesi Selatan, 25 Juni 1936
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div>
+        <strong>Pendidikan:</strong> RWTH Aachen University, Jerman — Gelar Doktor (Dr. Ing.) predikat <em>Summa Cum Laude</em>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div>
+        <strong>Karier:</strong> Messerschmitt-Bölkow-Blohm (MBB) Jerman → Memimpin IPTN → Menristek → Wapres RI ke-7 → Presiden RI ke-3
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div>
+        <strong>Julukan:</strong> "Bapak Teknologi Indonesia" 🏅
+      </div>
+    </div>
   </div>
 
-  <!-- SLIDE 2: MASALAH -->
-  <div class="slide">
-    <span class="pembicara">🎤 Karim Abdul Majid</span>
+  <!-- SLIDE 2: MASALAH - KARIM -->
+  <div class="card">
+    <div class="tag-pembicara">
+      <span class="dot"></span> Disampaikan oleh: Karim Abdul Majid
+    </div>
     <h2>⚠️ Masalah: Retakan pada Struktur Pesawat</h2>
-    <p>Dalam dunia penerbangan, B.J. Habibie mengamati sebuah masalah kritis yang mengancam keselamatan:</p>
-    <h3>Fenomena Kelelahan Material (Fatigue)</h3>
-    <p>Pesawat mengalami tekanan berulang saat lepas landas, terbang, dan mendarat. Siklus tekanan ini terjadi ribuan kali sepanjang umur pesawat.</p>
-    <h3>Awal Retakan (Crack Initiation)</h3>
-    <p>Tekanan berulang tersebut menimbulkan retakan (<em>crack</em>) yang sangat kecil di sekitar lubang paku keling (<em>rivet holes</em>) pada sambungan struktur pesawat. Retakan ini awalnya hanya berukuran mikrometer — tidak terlihat dengan mata telanjang.</p>
-    <h3>Bahaya Nyata</h3>
-    <p>Jika tidak dianalisis dengan tepat, retakan kecil ini dapat merambat dengan cepat dan tiba-tiba menyebabkan kegagalan struktur total (<em>catastrophic failure</em>) tanpa peringatan. Inilah ancaman serius bagi keselamatan penerbangan.</p>
+    
+    <h3>🔄 Fenomena Kelelahan Material (Fatigue)</h3>
+    <p>Pesawat mengalami tekanan berulang saat lepas landas, terbang, dan mendarat. Siklus ini terjadi <strong>ribuan kali</strong> sepanjang umur pesawat.</p>
+    
+    <h3>🔍 Awal Retakan (Crack Initiation)</h3>
+    <p>Tekanan berulang menimbulkan retakan sangat kecil di sekitar lubang paku keling (<em>rivet holes</em>) pada sambungan struktur. Retakan ini awalnya hanya berukuran <strong>mikrometer</strong> — tak terlihat mata telanjang!</p>
+    
+    <h3>💥 Bahaya Nyata</h3>
+    <p>Jika tidak dianalisis dengan tepat, retakan kecil dapat merambat cepat dan tiba-tiba menyebabkan <strong>kegagalan struktur total</strong> (<em>catastrophic failure</em>) tanpa peringatan. Inilah ancaman serius bagi keselamatan penerbangan!</p>
   </div>
 
-  <!-- SLIDE 3: SOLUSI -->
-  <div class="slide">
-    <span class="pembicara">🎤 Hanif Abdurrahman Syukur</span>
+  <!-- SLIDE 3: SOLUSI - HANIF -->
+  <div class="card">
+    <div class="tag-pembicara">
+      <span class="dot"></span> Disampaikan oleh: Hanif Abdurrahman Syukur
+    </div>
     <h2>💡 Solusi: Teori Crack Progression</h2>
-    <p>Habibie menciptakan metode perhitungan matematis yang revolusioner untuk memprediksi pertumbuhan retakan:</p>
-    <h3>Teori Crack Progression</h3>
-    <p>Sebuah metode untuk <strong>menghitung dan memprediksi secara tepat</strong> bagaimana retakan akan merambat di bawah beban siklikal (tekanan berulang).</p>
-    <h3>Pendekatan "Damage Tolerance"</h3>
-    <p>Filosofi desain yang memungkinkan sebuah retakan kecil diperbolehkan ada, tetapi pertumbuhannya dijamin <strong>tidak akan mencapai ukuran kritis</strong> sebelum jadwal inspeksi dan perbaikan berikutnya.</p>
-    <p><em>📊 Lihat simulasi grafik di bawah ini untuk visualisasi pertumbuhan retakan!</em></p>
+    
+    <h3>🧮 Metode Perhitungan Matematis</h3>
+    <p>Habibie menciptakan metode untuk <strong>menghitung dan memprediksi secara tepat</strong> bagaimana retakan merambat di bawah beban siklikal (tekanan berulang).</p>
+    
+    <h3>🛡️ Pendekatan "Damage Tolerance"</h3>
+    <p>Filosofi desain yang memungkinkan retakan kecil boleh ada, tetapi pertumbuhannya <strong>dijamin tidak mencapai ukuran kritis</strong> sebelum jadwal inspeksi berikutnya.</p>
+    
+    <p style="text-align: center; margin-top: 15px; color: #ffcc00;">
+      ⬇️ <strong>Simulasi grafik di bawah ini! Tekan tombol "Grafik Retakan"!</strong> ⬇️
+    </p>
   </div>
 
-  <!-- SIMULASI GRAFIK -->
-  <div id="container">
+  <!-- CANVAS SIMULASI -->
+  <div class="canvas-section">
     <h3>📈 Simulasi Grafik Pertumbuhan Retakan (Crack Growth Curve)</h3>
     <canvas id="board"></canvas>
+    <div class="tools-bar">
+      <button class="pen-btn" onclick="setMode('draw')">✍️ Tulis</button>
+      <button class="erase-btn" onclick="setMode('erase')">🧽 Hapus</button>
+      <input type="color" id="colorPicker" value="#000000" title="Pilih warna">
+      <button class="clear-btn" onclick="clearCanvas()">🗑️ Clear</button>
+      <button class="grid-btn" onclick="drawGrid()">📐 Grid</button>
+      <button class="graph-btn" onclick="drawGraph()">📊 Grafik Retakan</button>
+    </div>
   </div>
 
-  <div id="tools">
-    <button onclick="setMode('draw')">✍️ Tulis</button>
-    <button onclick="setMode('erase')">🧽 Hapus</button>
-    <input type="color" id="colorPicker" value="#000000" title="Pilih warna">
-    <button onclick="clearCanvas()">🗑️ Clear</button>
-    <button onclick="drawGrid()">📐 Grid</button>
-    <button onclick="drawGraph()">📊 Grafik Retakan</button>
-  </div>
-
-  <!-- SLIDE 4: DAMPAK 1 -->
-  <div class="slide">
-    <span class="pembicara">🎤 Arya Al Fatih</span>
+  <!-- SLIDE 4: DAMPAK 1 - ARYA -->
+  <div class="card">
+    <div class="tag-pembicara">
+      <span class="dot"></span> Disampaikan oleh: Arya Al Fatih
+    </div>
     <h2>🌍 Dampak bagi Dunia Penerbangan</h2>
     <ul>
-      <li><strong>Keselamatan Meningkat Drastis:</strong> Menghilangkan misteri kegagalan mendadak pada struktur pesawat. Penerbangan menjadi jauh lebih aman dan terprediksi.</li>
-      <li><strong>Efisiensi Perawatan:</strong> Maskapai dapat menjadwalkan perawatan berdasarkan prediksi ilmiah, bukan sekadar perkiraan. Ini menghemat biaya dan waktu operasional secara signifikan.</li>
-      <li><strong>Desain Pesawat Lebih Optimal:</strong> Insinyur dapat merancang struktur yang lebih ringan tanpa mengorbankan faktor keselamatan, membuat pesawat lebih hemat bahan bakar dan ramah lingkungan.</li>
+      <li><strong>Keselamatan Meningkat Drastis</strong> — Menghilangkan misteri kegagalan mendadak pada struktur pesawat. Penerbangan jadi jauh lebih aman dan terprediksi.</li>
+      <li><strong>Efisiensi Perawatan</strong> — Maskapai menjadwalkan perawatan berdasarkan prediksi ilmiah, bukan sekadar perkiraan. Hemat biaya dan waktu operasional!</li>
+      <li><strong>Desain Pesawat Lebih Optimal</strong> — Insinyur merancang struktur lebih ringan tanpa mengorbankan keselamatan, membuat pesawat lebih hemat bahan bakar.</li>
     </ul>
   </div>
 
-  <!-- SLIDE 5: DAMPAK 2 -->
-  <div class="slide">
-    <span class="pembicara">🎤 Firzan Al Nashih</span>
+  <!-- SLIDE 5: DAMPAK 2 - FIRZAN -->
+  <div class="card">
+    <div class="tag-pembicara">
+      <span class="dot"></span> Disampaikan oleh: Firzan Al Nashih
+    </div>
     <h2>🏆 Warisan Abadi B.J. Habibie</h2>
     <ul>
-      <li><strong>Standar Industri Global:</strong> Metode <em>Damage Tolerance</em> menjadi standar wajib dalam sertifikasi kelaikan udara semua pesawat modern di seluruh dunia (diadopsi oleh FAA Amerika dan EASA Eropa).</li>
-      <li><strong>Kebanggaan Nasional:</strong> Membuktikan bahwa putra-putri Indonesia mampu berkontribusi pada puncak ilmu pengetahuan dan teknologi dunia.</li>
-      <li><strong>Inspirasi Abadi:</strong> Semangat Habibie untuk menjadikan teknologi sebagai tulang punggung kemajuan bangsa terus menginspirasi generasi muda Indonesia. Pesawat N-250 Gatotkaca adalah bukti nyata aplikasi pemikiran beliau.</li>
+      <li><strong>Standar Industri Global</strong> — Metode <em>Damage Tolerance</em> menjadi standar wajib sertifikasi kelaikan udara semua pesawat modern di dunia (FAA & EASA).</li>
+      <li><strong>Kebanggaan Nasional</strong> — Membuktikan putra-putri Indonesia mampu berkontribusi di puncak ilmu pengetahuan dunia! 🇮🇩</li>
+      <li><strong>Inspirasi Abadi</strong> — Semangat Habibie terus menginspirasi generasi muda. Pesawat N-250 Gatotkaca adalah bukti nyata pemikiran beliau.</li>
     </ul>
   </div>
 
-  <!-- KESIMPULAN -->
-  <div class="kesimpulan">
-    <p>"Inti dari penemuan B.J. Habibie bukan hanya tentang retakan, tetapi tentang <strong>mengubah krisis menjadi peluang melalui ilmu pengetahuan</strong>. Beliau mengajarkan kita bahwa dengan perhitungan yang tepat, kita dapat memprediksi masa depan dan mencegah bencana."</p>
+  <!-- QUOTE PENUTUP -->
+  <div class="quote-box">
+    <div class="quote-icon">💬</div>
+    <p>
+      "Inti dari penemuan B.J. Habibie bukan hanya tentang retakan, tetapi tentang <strong>mengubah krisis menjadi peluang melalui ilmu pengetahuan</strong>. Beliau mengajarkan kita bahwa dengan perhitungan yang tepat, kita dapat memprediksi masa depan dan mencegah bencana."
+    </p>
   </div>
 
 </main>
 
 <!-- FOOTER -->
 <footer>
-  <p>© 2026 Kelompok 9C — Presentasi B.J. Habibie | Thufail · Karim · Hanif · Arya · Firzan</p>
+  <p>© 2024 <span class="kelompok-name">Kelompok 9C</span> — Presentasi B.J. Habibie</p>
+  <p>Thufail · Karim · Hanif · Arya · Firzan</p>
 </footer>
 
 <!-- JAVASCRIPT -->
@@ -352,7 +555,7 @@ document.getElementById('colorPicker').addEventListener('input', (e) => {
   color = e.target.value;
 });
 
-// Touch events (untuk mobile/tablet)
+// Touch events (mobile)
 canvas.addEventListener('touchstart', (e) => {
   e.preventDefault();
   drawing = true;
@@ -370,16 +573,12 @@ canvas.addEventListener('touchend', () => {
 canvas.addEventListener('touchmove', (e) => {
   e.preventDefault();
   if (!drawing) return;
-
   const touch = e.touches[0];
   const rect = canvas.getBoundingClientRect();
-  const x = touch.clientX - rect.left;
-  const y = touch.clientY - rect.top;
-
-  draw(x, y);
+  draw(touch.clientX - rect.left, touch.clientY - rect.top);
 });
 
-// Mouse events (untuk desktop)
+// Mouse events (desktop)
 canvas.addEventListener('mousedown', (e) => {
   drawing = true;
   const rect = canvas.getBoundingClientRect();
@@ -395,12 +594,9 @@ canvas.addEventListener('mouseup', () => {
 canvas.addEventListener('mousemove', (e) => {
   if (!drawing) return;
   const rect = canvas.getBoundingClientRect();
-  const x = e.clientX - rect.left;
-  const y = e.clientY - rect.top;
-  draw(x, y);
+  draw(e.clientX - rect.left, e.clientY - rect.top);
 });
 
-// Fungsi menggambar
 function draw(x, y) {
   if (mode === 'draw') {
     ctx.globalCompositeOperation = 'source-over';
@@ -410,7 +606,6 @@ function draw(x, y) {
     ctx.globalCompositeOperation = 'destination-out';
     ctx.lineWidth = 25;
   }
-
   ctx.lineCap = 'round';
   ctx.lineJoin = 'round';
   ctx.lineTo(x, y);
@@ -419,12 +614,10 @@ function draw(x, y) {
   ctx.moveTo(x, y);
 }
 
-// Clear canvas
 function clearCanvas() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
-// Gambar grid
 function drawGrid() {
   clearCanvas();
   ctx.strokeStyle = '#ddd';
@@ -436,7 +629,6 @@ function drawGrid() {
     ctx.lineTo(x, canvas.height);
     ctx.stroke();
   }
-
   for (let y = 0; y < canvas.height; y += 30) {
     ctx.beginPath();
     ctx.moveTo(0, y);
@@ -444,17 +636,13 @@ function drawGrid() {
     ctx.stroke();
   }
 
-  // Garis sumbu
+  // Sumbu X dan Y
   ctx.strokeStyle = '#999';
   ctx.lineWidth = 2;
-  
-  // Sumbu X
   ctx.beginPath();
   ctx.moveTo(0, canvas.height / 2);
   ctx.lineTo(canvas.width, canvas.height / 2);
   ctx.stroke();
-  
-  // Sumbu Y
   ctx.beginPath();
   ctx.moveTo(canvas.width / 2, 0);
   ctx.lineTo(canvas.width / 2, canvas.height);
@@ -463,15 +651,14 @@ function drawGrid() {
   // Label
   ctx.fillStyle = '#999';
   ctx.font = '12px Roboto Slab';
-  ctx.fillText('Siklus Tekanan (N)', canvas.width - 120, canvas.height / 2 + 20);
+  ctx.fillText('Siklus Tekanan (N)', canvas.width - 130, canvas.height / 2 + 20);
   ctx.fillText('Panjang Retakan (a)', canvas.width / 2 + 10, 20);
 }
 
-// Gambar grafik pertumbuhan retakan (parabola)
 function drawGraph() {
   drawGrid();
 
-  ctx.strokeStyle = '#ff0000';
+  ctx.strokeStyle = '#ff0044';
   ctx.lineWidth = 3;
   ctx.beginPath();
 
@@ -479,33 +666,33 @@ function drawGraph() {
   const centerY = canvas.height / 2;
 
   for (let x = -180; x <= 180; x += 1) {
-    let y = (x * x) / 60;  // Persamaan parabola: y = x²/60
-
+    let y = (x * x) / 60;
     let drawX = centerX + x;
     let drawY = centerY - y;
-
     if (drawX >= 0 && drawX <= canvas.width && drawY >= 0 && drawY <= canvas.height) {
       ctx.lineTo(drawX, drawY);
     }
   }
-
   ctx.stroke();
 
   // Label grafik
-  ctx.fillStyle = '#ff0000';
+  ctx.fillStyle = '#ff0044';
   ctx.font = 'bold 14px Roboto Slab';
-  ctx.fillText('Laju Pertumbuhan Retakan', canvas.width / 2 + 50, 60);
-  ctx.fillText('Retakan Kritis', canvas.width - 100, canvas.height / 2 - 60);
+  ctx.fillText('Kurva Pertumbuhan Retakan', canvas.width / 2 + 40, 55);
   
   // Garis batas kritis
-  ctx.strokeStyle = '#ff6600';
+  ctx.strokeStyle = '#ff8800';
   ctx.lineWidth = 2;
-  ctx.setLineDash([5, 5]);
+  ctx.setLineDash([6, 6]);
   ctx.beginPath();
   ctx.moveTo(0, canvas.height / 2 - 100);
   ctx.lineTo(canvas.width, canvas.height / 2 - 100);
   ctx.stroke();
   ctx.setLineDash([]);
+  
+  ctx.fillStyle = '#ff8800';
+  ctx.font = 'bold 12px Roboto Slab';
+  ctx.fillText('Batas Kritis', 10, canvas.height / 2 - 108);
 }
 </script>
 
