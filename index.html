@@ -7,6 +7,7 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
 * {
@@ -24,7 +25,7 @@ body {
   min-height: 100vh;
 }
 
-/* OVERLAY AGAR TEXT TETAP TERBACA TAPI BACKGROUND TETAP KELIHATAN */
+/* OVERLAY */
 body::before {
   content: "";
   position: fixed;
@@ -34,13 +35,12 @@ body::before {
   pointer-events: none;
 }
 
-/* SEMUA KONTEN DI ATAS OVERLAY */
 body > * {
   position: relative;
   z-index: 1;
 }
 
-/* HEADER - TRANSPARAN DENGAN BLUR */
+/* HERO */
 .hero {
   text-align: center;
   padding: 40px 20px 30px;
@@ -103,14 +103,14 @@ body > * {
   transform: translateY(-3px);
 }
 
-/* MAIN CONTAINER */
+/* MAIN */
 main {
-  max-width: 900px;
+  max-width: 950px;
   margin: 0 auto;
   padding: 15px;
 }
 
-/* CARD STYLE - TRANSPARAN DENGAN BACKGROUND TERLIHAT */
+/* CARD */
 .card {
   background: rgba(0, 15, 40, 0.5);
   backdrop-filter: blur(8px);
@@ -140,7 +140,13 @@ main {
 .card h3 {
   font-size: 18px;
   color: #ffbb33;
-  margin: 15px 0 8px;
+  margin: 18px 0 8px;
+}
+
+.card h4 {
+  font-size: 16px;
+  color: #00ccff;
+  margin: 15px 0 6px;
 }
 
 .card p {
@@ -149,12 +155,12 @@ main {
   color: #e0e0e0;
 }
 
-.card ul {
-  list-style: none;
+.card ul, .card ol {
   padding-left: 0;
+  list-style: none;
 }
 
-.card ul li {
+.card ul li, .card ol li {
   padding: 10px 0 10px 35px;
   position: relative;
   line-height: 1.7;
@@ -162,7 +168,7 @@ main {
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.card ul li:last-child {
+.card ul li:last-child, .card ol li:last-child {
   border-bottom: none;
 }
 
@@ -174,7 +180,22 @@ main {
   font-size: 16px;
 }
 
-/* TAG PEMBICARA - LEBIH STYLISH */
+.card ol {
+  counter-reset: item;
+}
+
+.card ol li::before {
+  content: counter(item) ".";
+  counter-increment: item;
+  position: absolute;
+  left: 8px;
+  top: 10px;
+  color: #00ccff;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* TAG PEMBICARA */
 .tag-pembicara {
   display: inline-flex;
   align-items: center;
@@ -203,7 +224,6 @@ main {
   50% { opacity: 0.3; }
 }
 
-/* BADGE INFO */
 .badge-info {
   display: inline-block;
   background: rgba(0, 200, 255, 0.2);
@@ -215,7 +235,92 @@ main {
   margin-left: 5px;
 }
 
-/* CANVAS SECTION */
+/* FOTO HABIBIE */
+.foto-habibie-container {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.foto-habibie {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid rgba(0, 200, 255, 0.6);
+  box-shadow: 0 0 30px rgba(0, 180, 255, 0.5), 0 0 60px rgba(0, 120, 255, 0.3);
+  transition: all 0.5s;
+}
+
+.foto-habibie:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 40px rgba(0, 200, 255, 0.8), 0 0 80px rgba(0, 150, 255, 0.5);
+}
+
+.foto-caption {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #aaa;
+  font-style: italic;
+}
+
+/* RUMUS BOX */
+.rumus-box {
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(255, 200, 0, 0.6);
+  border-radius: 15px;
+  padding: 20px;
+  margin: 20px 0;
+  text-align: center;
+  backdrop-filter: blur(5px);
+}
+
+.rumus-box .rumus {
+  font-family: 'Noto Serif JP', 'Times New Roman', serif;
+  font-size: 20px;
+  color: #ffdd57;
+  letter-spacing: 2px;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  display: inline-block;
+  margin: 8px 0;
+}
+
+.rumus-box .keterangan {
+  font-size: 13px;
+  color: #ccc;
+  margin-top: 8px;
+  text-align: left;
+  line-height: 1.8;
+}
+
+/* TABEL */
+.tabel-mini {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 15px 0;
+  font-size: 14px;
+}
+
+.tabel-mini th {
+  background: rgba(0, 180, 255, 0.3);
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffdd57;
+}
+
+.tabel-mini td {
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  text-align: center;
+  color: #e0e0e0;
+}
+
+.tabel-mini tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* CANVAS */
 .canvas-section {
   background: rgba(0, 15, 40, 0.5);
   backdrop-filter: blur(8px);
@@ -234,7 +339,7 @@ main {
 
 canvas {
   width: 100%;
-  height: 380px;
+  height: 400px;
   background: #ffffff;
   border-radius: 12px;
   touch-action: none;
@@ -242,7 +347,6 @@ canvas {
   box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
 }
 
-/* TOOLS */
 .tools-bar {
   display: flex;
   flex-wrap: wrap;
@@ -299,7 +403,7 @@ canvas {
   background: transparent;
 }
 
-/* QUOTE BOX */
+/* QUOTE */
 .quote-box {
   background: linear-gradient(135deg, rgba(0, 180, 255, 0.2), rgba(0, 100, 200, 0.1));
   border: 2px solid rgba(0, 200, 255, 0.5);
@@ -368,10 +472,12 @@ footer .kelompok-name {
   .hero h1 { font-size: 22px; }
   .card h2 { font-size: 18px; }
   .card h3 { font-size: 16px; }
-  canvas { height: 260px; }
+  canvas { height: 280px; }
   .tools-bar button { padding: 8px 12px; font-size: 11px; }
   .hero .anggota-badge { gap: 6px; }
   .hero .anggota-badge span { padding: 6px 12px; font-size: 12px; }
+  .foto-habibie { width: 150px; height: 150px; }
+  .rumus-box .rumus { font-size: 16px; }
 }
 </style>
 </head>
@@ -398,83 +504,290 @@ footer .kelompok-name {
 <!-- MAIN CONTENT -->
 <main>
 
-  <!-- SLIDE 1: BIOGRAFI - THUFAIL -->
+  <!-- ==================== SLIDE 1: BIOGRAFI - THUFAIL ==================== -->
   <div class="card">
     <div class="tag-pembicara">
       <span class="dot"></span> Disampaikan oleh: Thufail Khairul Fatihin
     </div>
-    <h2>📖 Biografi Singkat B.J. Habibie</h2>
+    <h2>📖 Biografi Lengkap B.J. Habibie</h2>
     
+    <!-- FOTO HABIBIE -->
+    <div class="foto-habibie-container">
+      <img src="habibie.png" alt="B.J. Habibie" class="foto-habibie" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <div class="foto-caption">Prof. Dr. Ing. H. Bacharuddin Jusuf Habibie (1936–2019)</div>
+      <p id="foto-error" style="display: none; color: #ff8888; font-size: 13px; margin-top: 8px;">
+        ⚠️ Foto tidak ditemukan. Pastikan file <strong>habibie.png</strong> ada di folder yang sama dengan file HTML ini.
+      </p>
+    </div>
+    
+    <h3>📅 Masa Kecil & Pendidikan Awal</h3>
     <div class="timeline-item">
       <div class="timeline-dot"></div>
       <div>
-        <strong>Nama Lengkap:</strong> Prof. Dr. Ing. H. Bacharuddin Jusuf Habibie
+        <strong>Lahir:</strong> Parepare, Sulawesi Selatan, 25 Juni 1936 — putra ke-4 dari 8 bersaudara pasangan Alwi Abdul Jalil Habibie (ahli pertanian) dan R.A. Tuti Marini Puspowardojo.
       </div>
     </div>
     <div class="timeline-item">
       <div class="timeline-dot"></div>
       <div>
-        <strong>Lahir:</strong> Parepare, Sulawesi Selatan, 25 Juni 1936
+        <strong>1942–1950:</strong> Sekolah dasar di Parepare, lalu SMP di Ujung Pandang (kini Makassar). Sejak kecil sudah menunjukkan minat besar pada sains dan matematika.
       </div>
     </div>
     <div class="timeline-item">
       <div class="timeline-dot"></div>
       <div>
-        <strong>Pendidikan:</strong> RWTH Aachen University, Jerman — Gelar Doktor (Dr. Ing.) predikat <em>Summa Cum Laude</em>
+        <strong>1950–1954:</strong> SMAK Dago, Bandung — sekolah menengah Katolik bergengsi. Di sinilah kemampuan akademiknya semakin terasah, terutama di bidang eksakta.
+      </div>
+    </div>
+
+    <h3>🎓 Pendidikan Tinggi di Indonesia & Jerman</h3>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div>
+        <strong>1954:</strong> Masuk Fakultas Teknik Mesin Universitas Indonesia Bandung (kini Institut Teknologi Bandung / ITB).
       </div>
     </div>
     <div class="timeline-item">
       <div class="timeline-dot"></div>
       <div>
-        <strong>Karier:</strong> Messerschmitt-Bölkow-Blohm (MBB) Jerman → Memimpin IPTN → Menristek → Wapres RI ke-7 → Presiden RI ke-3
+        <strong>1955–1960:</strong> Mendapat beasiswa dari Kementerian Pendidikan untuk melanjutkan studi ke <strong>RWTH Aachen University</strong>, Jerman — jurusan <em>Flugzeugbau</em> (Konstruksi Pesawat Terbang). Lulus dengan gelar <em>Diplom-Ingenieur</em> (setara S1) dengan nilai sangat memuaskan.
       </div>
     </div>
     <div class="timeline-item">
       <div class="timeline-dot"></div>
       <div>
-        <strong>Julukan:</strong> "Bapak Teknologi Indonesia" 🏅
+        <strong>1960–1965:</strong> Melanjutkan program doktoral di RWTH Aachen. Meraih gelar <strong>Doktor Ingenieur (Dr. Ing.)</strong> dengan predikat tertinggi: <strong><em>Summa Cum Laude</em></strong> (nilai sempurna). Disertasinya tentang analisis struktur pesawat menjadi dasar dari penemuan besarnya kelak.
       </div>
     </div>
+
+    <h3>💼 Karier di Jerman</h3>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div>
+        <strong>1965–1969:</strong> Bekerja di <strong>Hamburger Flugzeugbau (HFB)</strong>, salah satu produsen pesawat terkemuka Jerman. Di sinilah ia mulai mendalami masalah <em>fatigue</em> dan retakan pada struktur pesawat.
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div>
+        <strong>1969–1974:</strong> Bergabung dengan <strong>Messerschmitt-Bölkow-Blohm (MBB)</strong>, perusahaan aerospace raksasa Jerman. Jabatan terakhirnya: <strong>Wakil Presiden dan Direktur Teknologi</strong> — posisi tertinggi yang pernah dipegang oleh orang non-Jerman di perusahaan itu.
+      </div>
+    </div>
+
+    <h3>🇮🇩 Kembali ke Indonesia</h3>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div>
+        <strong>1974:</strong> Dipanggil pulang oleh Presiden Soeharto untuk membangun industri strategis Indonesia. Menjabat sebagai Penasihat Pemerintah di bidang teknologi.
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div>
+        <strong>1976:</strong> Mendirikan dan memimpin <strong>IPTN (Industri Pesawat Terbang Nusantara)</strong>, kini PT Dirgantara Indonesia. Di bawah kepemimpinannya, IPTN berhasil memproduksi pesawat CN-235 (kerja sama dengan Spanyol) dan N-250 Gatotkaca — pesawat turboprop pertama yang 100% dirancang dan dibuat di Indonesia.
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div>
+        <strong>1978–1998:</strong> Menjabat sebagai <strong>Menteri Negara Riset dan Teknologi (Menristek)</strong> selama 20 tahun — terlama dalam sejarah kabinet Indonesia.
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div>
+        <strong>1998:</strong> Menjadi <strong>Wakil Presiden RI ke-7</strong>, kemudian naik menjadi <strong>Presiden RI ke-3</strong> (21 Mei 1998 – 20 Oktober 1999) menggantikan Presiden Soeharto.
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div>
+        <strong>2019:</strong> Wafat pada 11 September 2019 di Jakarta, meninggalkan warisan ilmu pengetahuan dan teknologi yang tak ternilai bagi Indonesia dan dunia.
+      </div>
+    </div>
+
+    <h3>🏅 Penghargaan Internasional</h3>
+    <ul>
+      <li><strong>Theodore van Karman Award</strong> — penghargaan tertinggi di bidang aerospace dari International Council of the Aeronautical Sciences (ICAS)</li>
+      <li><strong>Edward Warner Award</strong> — dari International Civil Aviation Organization (ICAO)</li>
+      <li>Gelar <strong>Doctor Honoris Causa</strong> dari berbagai universitas ternama dunia</li>
+      <li>Anggota kehormatan berbagai akademi teknik internasional</li>
+    </ul>
   </div>
 
-  <!-- SLIDE 2: MASALAH - KARIM -->
+  <!-- ==================== SLIDE 2: LATAR BELAKANG MASALAH - KARIM ==================== -->
   <div class="card">
     <div class="tag-pembicara">
       <span class="dot"></span> Disampaikan oleh: Karim Abdul Majid
     </div>
-    <h2>⚠️ Masalah: Retakan pada Struktur Pesawat</h2>
+    <h2>⚠️ Latar Belakang: Masalah Retakan pada Struktur Pesawat</h2>
     
-    <h3>🔄 Fenomena Kelelahan Material (Fatigue)</h3>
-    <p>Pesawat mengalami tekanan berulang saat lepas landas, terbang, dan mendarat. Siklus ini terjadi <strong>ribuan kali</strong> sepanjang umur pesawat.</p>
-    
-    <h3>🔍 Awal Retakan (Crack Initiation)</h3>
-    <p>Tekanan berulang menimbulkan retakan sangat kecil di sekitar lubang paku keling (<em>rivet holes</em>) pada sambungan struktur. Retakan ini awalnya hanya berukuran <strong>mikrometer</strong> — tak terlihat mata telanjang!</p>
-    
-    <h3>💥 Bahaya Nyata</h3>
-    <p>Jika tidak dianalisis dengan tepat, retakan kecil dapat merambat cepat dan tiba-tiba menyebabkan <strong>kegagalan struktur total</strong> (<em>catastrophic failure</em>) tanpa peringatan. Inilah ancaman serius bagi keselamatan penerbangan!</p>
+    <h3>🔄 Apa Itu Kelelahan Material (Material Fatigue)?</h3>
+    <p>
+      <strong>Kelelahan material (fatigue)</strong> adalah fenomena di mana material logam mengalami kerusakan progresif akibat beban siklikal (berulang) yang besarnya <strong>jauh di bawah kekuatan tarik maksimum</strong> material tersebut. Artinya, meskipun tekanan yang diterima tergolong "kecil" — jika terjadi berulang-ulang ribuan hingga jutaan kali — material tersebut akhirnya bisa retak dan patah.
+    </p>
+    <p>
+      Pada pesawat terbang, setiap kali pesawat lepas landas (tekanan kabin meningkat), terbang di ketinggian (tekanan stabil), dan mendarat (tekanan menurun), struktur pesawat mengalami <strong>satu siklus tegangan penuh</strong>. Untuk pesawat komersial yang terbang ribuan kali sepanjang umurnya, ini menjadi masalah serius.
+    </p>
+
+    <h3>🔍 Di Mana Retakan Biasanya Muncul?</h3>
+    <p>Retakan hampir selalu bermula dari titik-titik konsentrasi tegangan (<em>stress concentration points</em>), seperti:</p>
+    <ul>
+      <li><strong>Lubang paku keling (rivet holes)</strong> — tempat menyambungkan panel-panel aluminium pada badan dan sayap pesawat</li>
+      <li><strong>Sudut tajam</strong> pada struktur rangka</li>
+      <li><strong>Lubang baut (bolt holes)</strong> pada sambungan sayap dan badan pesawat</li>
+      <li><strong>Goresan atau cacat permukaan</strong> akibat proses manufaktur</li>
+    </ul>
+
+    <h3>📐 Tiga Tahap Pertumbuhan Retakan</h3>
+    <ol>
+      <li>
+        <strong>Tahap I — Inisiasi Retakan (Crack Initiation):</strong><br>
+        Retakan mikroskopis mulai terbentuk di titik konsentrasi tegangan. Ukurannya sangat kecil (skala mikrometer) dan <strong>tidak terdeteksi secara visual</strong>. Tahap ini bisa berlangsung sangat lama — hingga 80-90% dari total umur fatik komponen.
+      </li>
+      <li>
+        <strong>Tahap II — Perambatan Retakan (Crack Propagation):</strong><br>
+        Retakan mulai merambat secara stabil dan terukur setiap kali terjadi siklus tegangan. Kecepatan perambatan masih relatif lambat pada awalnya, tetapi semakin lama semakin cepat. <strong>Di sinilah kontribusi terbesar Habibie</strong> — ia mengembangkan metode untuk memprediksi kecepatan perambatan ini.
+      </li>
+      <li>
+        <strong>Tahap III — Patah Akhir (Final Fracture):</strong><br>
+        Ketika retakan mencapai ukuran kritis, struktur tidak mampu lagi menahan beban dan terjadi <strong>kegagalan total secara tiba-tiba (catastrophic failure)</strong>. Inilah yang harus dicegah dengan inspeksi dan perawatan terjadwal.
+      </li>
+    </ol>
+
+    <h3>💥 Tragedi Nyata Akibat Kegagalan Fatik</h3>
+    <p>Beberapa kecelakaan pesawat paling terkenal dalam sejarah disebabkan oleh kegagalan fatik yang tidak terdeteksi:</p>
+    <table class="tabel-mini">
+      <tr>
+        <th>Tahun</th>
+        <th>Pesawat</th>
+        <th>Penyebab</th>
+        <th>Korban</th>
+      </tr>
+      <tr>
+        <td>1954</td>
+        <td>De Havilland Comet (BOAC Penerbangan 781 & South African Airways 201)</td>
+        <td>Retakan fatik di sekitar jendela akibat siklus tekanan kabin</td>
+        <td>56 orang</td>
+      </tr>
+      <tr>
+        <td>1988</td>
+        <td>Aloha Airlines Penerbangan 243 (Boeing 737)</td>
+        <td>Kegagalan fatik pada sambungan panel badan pesawat — atap pesawat terlepas di ketinggian</td>
+        <td>1 pramugari meninggal, 65 luka-luka</td>
+      </tr>
+    </table>
+    <p>
+      Tragedi De Havilland Comet tahun 1954 menjadi <strong>titik balik</strong> yang mendorong penelitian intensif tentang kelelahan material pada struktur pesawat — dan di sinilah Habibie kemudian memberikan kontribusi revolusionernya.
+    </p>
   </div>
 
-  <!-- SLIDE 3: SOLUSI - HANIF -->
+  <!-- ==================== SLIDE 3: SOLUSI & RUMUS - HANIF ==================== -->
   <div class="card">
     <div class="tag-pembicara">
       <span class="dot"></span> Disampaikan oleh: Hanif Abdurrahman Syukur
     </div>
-    <h2>💡 Solusi: Teori Crack Progression</h2>
+    <h2>💡 Solusi Revolusioner: Teori Crack Progression & Rumus Matematis</h2>
     
-    <h3>🧮 Metode Perhitungan Matematis</h3>
-    <p>Habibie menciptakan metode untuk <strong>menghitung dan memprediksi secara tepat</strong> bagaimana retakan merambat di bawah beban siklikal (tekanan berulang).</p>
-    
-    <h3>🛡️ Pendekatan "Damage Tolerance"</h3>
-    <p>Filosofi desain yang memungkinkan retakan kecil boleh ada, tetapi pertumbuhannya <strong>dijamin tidak mencapai ukuran kritis</strong> sebelum jadwal inspeksi berikutnya.</p>
-    
+    <h3>🧠 Pemikiran Dasar Habibie</h3>
+    <p>
+      Sebelum Habibie, pendekatan yang dominan dalam industri penerbangan adalah <strong>"Safe-Life"</strong> — yaitu mendesain komponen agar tidak mengalami retakan sama sekali selama masa pakainya. Pendekatan ini sangat konservatif dan boros, karena komponen harus diganti jauh sebelum waktunya, meskipun sebenarnya masih aman.
+    </p>
+    <p>
+      Habibie memperkenalkan pendekatan baru yang disebut <strong>"Damage Tolerance" (Toleransi Kerusakan)</strong>. Filosofinya: <strong>retakan kecil diperbolehkan ada, asalkan pertumbuhannya dapat diprediksi dan dijamin tidak mencapai ukuran kritis sebelum inspeksi berikutnya.</strong>
+    </p>
+
+    <h3>📐 Dasar Ilmiah: Hukum Paris-Erdogan</h3>
+    <p>
+      Habibie menggunakan dan mengembangkan lebih lanjut <strong>Hukum Paris (Paris' Law)</strong> yang dirumuskan oleh Paul C. Paris pada tahun 1961. Hukum ini menghubungkan laju pertumbuhan retakan dengan faktor intensitas tegangan:
+    </p>
+
+    <!-- RUMUS 1: Paris Law -->
+    <div class="rumus-box">
+      <div style="font-size: 16px; color: #00ccff; margin-bottom: 8px;">📐 <strong>Hukum Paris (Paris' Law)</strong></div>
+      <div class="rumus">da/dN = C × (ΔK)<sup>m</sup></div>
+      <div class="keterangan">
+        <strong>Di mana:</strong><br>
+        • <strong>da/dN</strong> = Laju pertumbuhan retakan per siklus (mm/siklus)<br>
+        • <strong>ΔK</strong> = Rentang faktor intensitas tegangan (Stress Intensity Factor Range) = K<sub>max</sub> − K<sub>min</sub><br>
+        • <strong>C dan m</strong> = Konstanta material yang diperoleh dari eksperimen laboratorium<br>
+        • <strong>m</strong> biasanya bernilai antara 2 sampai 4 untuk logam aluminium (material utama pesawat)
+      </div>
+    </div>
+
+    <!-- RUMUS 2: Stress Intensity Factor -->
+    <div class="rumus-box">
+      <div style="font-size: 16px; color: #00ccff; margin-bottom: 8px;">📐 <strong>Faktor Intensitas Tegangan (Stress Intensity Factor)</strong></div>
+      <div class="rumus">K = Y × σ × √(π × a)</div>
+      <div class="keterangan">
+        <strong>Di mana:</strong><br>
+        • <strong>K</strong> = Faktor intensitas tegangan (MPa√m)<br>
+        • <strong>Y</strong> = Faktor geometri (bergantung pada bentuk retakan dan komponen)<br>
+        • <strong>σ</strong> = Tegangan yang diterapkan (MPa)<br>
+        • <strong>a</strong> = Panjang retakan (meter)<br>
+        • <strong>π</strong> = Konstanta pi (3,14159...)
+      </div>
+    </div>
+
+    <!-- RUMUS 3: Retakan Kritis -->
+    <div class="rumus-box">
+      <div style="font-size: 16px; color: #00ccff; margin-bottom: 8px;">📐 <strong>Ukuran Retakan Kritis (Critical Crack Size)</strong></div>
+      <div class="rumus">a<sub>cr</sub> = (K<sub>IC</sub>)² / (π × Y² × σ²)</div>
+      <div class="keterangan">
+        <strong>Di mana:</strong><br>
+        • <strong>a<sub>cr</sub></strong> = Ukuran retakan kritis (meter) — jika retakan mencapai ukuran ini, struktur akan gagal<br>
+        • <strong>K<sub>IC</sub></strong> = Ketangguhan patah material (Fracture Toughness) — nilai tetap untuk setiap material<br>
+        • <strong>Y</strong> = Faktor geometri<br>
+        • <strong>σ</strong> = Tegangan yang diterapkan
+      </div>
+    </div>
+
+    <h3>🔬 Kontribusi Spesifik Habibie</h3>
+    <p>Habibie mengembangkan metode untuk:</p>
+    <ol>
+      <li>
+        <strong>Menghitung ΔK secara akurat</strong> untuk geometri kompleks seperti sambungan paku keling pada badan dan sayap pesawat. Ini melibatkan analisis elemen hingga (<em>Finite Element Analysis</em>) yang pada zamannya masih sangat baru.
+      </li>
+      <li>
+        <strong>Menentukan konstanta C dan m</strong> untuk berbagai material aluminium yang digunakan dalam konstruksi pesawat melalui eksperimen laboratorium yang ekstensif.
+      </li>
+      <li>
+        <strong>Mengintegrasikan persamaan Paris</strong> untuk menghitung jumlah siklus yang diperlukan agar retakan tumbuh dari ukuran awal (a<sub>0</sub>) hingga ukuran kritis (a<sub>cr</sub>):
+      </li>
+    </ol>
+
+    <!-- RUMUS 4: Integrasi Siklus -->
+    <div class="rumus-box">
+      <div style="font-size: 16px; color: #00ccff; margin-bottom: 8px;">📐 <strong>Integrasi untuk Menghitung Umur Sisa (Residual Life)</strong></div>
+      <div class="rumus">
+        N<sub>f</sub> = ∫<sub>a₀</sub><sup>a<sub>cr</sub></sup> da / [C × (ΔK)<sup>m</sup>]
+      </div>
+      <div class="keterangan">
+        <strong>Di mana:</strong><br>
+        • <strong>N<sub>f</sub></strong> = Jumlah siklus yang tersedia sebelum retakan mencapai ukuran kritis<br>
+        • <strong>a₀</strong> = Ukuran retakan awal (initial crack size)<br>
+        • <strong>a<sub>cr</sub></strong> = Ukuran retakan kritis<br>
+        • Hasil integral ini memberi tahu insinyur <strong>kapan harus melakukan inspeksi dan perbaikan</strong>
+      </div>
+    </div>
+
+    <h3>🛡️ Penerapan: Filosofi Damage Tolerance</h3>
+    <p>Dengan rumus-rumus di atas, Habibie menetapkan prinsip <strong>Damage Tolerance</strong> yang menjadi standar industri penerbangan modern:</p>
+    <ol>
+      <li><strong>Asumsikan retakan selalu ada</strong> — sejak pesawat pertama kali dibuat, diasumsikan ada retakan kecil yang tidak terdeteksi.</li>
+      <li><strong>Hitung laju pertumbuhannya</strong> — menggunakan Hukum Paris dan data material.</li>
+      <li><strong>Tentukan interval inspeksi</strong> — inspeksi harus dilakukan <strong>sebelum</strong> retakan mencapai ukuran kritis.</li>
+      <li><strong>Jika retakan terdeteksi saat inspeksi</strong> — lakukan perbaikan atau penggantian komponen.</li>
+    </ol>
+
     <p style="text-align: center; margin-top: 15px; color: #ffcc00;">
-      ⬇️ <strong>Simulasi grafik di bawah ini! Tekan tombol "Grafik Retakan"!</strong> ⬇️
+      ⬇️ <strong>Simulasi grafik interaktif di bawah ini! Tekan tombol "Grafik Retakan"!</strong> ⬇️
     </p>
   </div>
 
-  <!-- CANVAS SIMULASI -->
+  <!-- ==================== CANVAS SIMULASI ==================== -->
   <div class="canvas-section">
-    <h3>📈 Simulasi Grafik Pertumbuhan Retakan (Crack Growth Curve)</h3>
+    <h3>📈 Simulasi Grafik Pertumbuhan Retakan (Crack Growth Curve — Hukum Paris)</h3>
     <canvas id="board"></canvas>
     <div class="tools-bar">
       <button class="pen-btn" onclick="setMode('draw')">✍️ Tulis</button>
@@ -486,37 +799,106 @@ footer .kelompok-name {
     </div>
   </div>
 
-  <!-- SLIDE 4: DAMPAK 1 - ARYA -->
+  <!-- ==================== SLIDE 4: DAMPAK 1 - ARYA ==================== -->
   <div class="card">
     <div class="tag-pembicara">
       <span class="dot"></span> Disampaikan oleh: Arya Al Fatih
     </div>
-    <h2>🌍 Dampak bagi Dunia Penerbangan</h2>
+    <h2>🌍 Dampak Revolusioner bagi Dunia Penerbangan</h2>
+    
+    <h3>1. Keselamatan Penerbangan Meningkat Drastis</h3>
+    <p>
+      Sebelum metode Habibie diadopsi, inspeksi pesawat dilakukan berdasarkan <strong>perkiraan waktu</strong> yang sangat konservatif — setiap beberapa ratus jam terbang, komponen diganti begitu saja. Ini tidak efisien dan kadang tetap berisiko karena retakan bisa tumbuh lebih cepat dari perkiraan.
+    </p>
+    <p>
+      Dengan metode <strong>Damage Tolerance</strong> berbasis perhitungan matematis Habibie, inspeksi dilakukan berdasarkan <strong>prediksi ilmiah yang akurat</strong>. Ini secara drastis mengurangi risiko kegagalan struktural mendadak yang tidak terdeteksi.
+    </p>
+
+    <h3>2. Penghematan Biaya Operasional Maskapai</h3>
+    <p>
+      Bayangkan sebuah maskapai dengan 100 pesawat. Jika setiap komponen diganti terlalu cepat (karena pendekatan konservatif "Safe-Life"), biaya yang dikeluarkan sangat besar. Dengan metode Habibie:
+    </p>
     <ul>
-      <li><strong>Keselamatan Meningkat Drastis</strong> — Menghilangkan misteri kegagalan mendadak pada struktur pesawat. Penerbangan jadi jauh lebih aman dan terprediksi.</li>
-      <li><strong>Efisiensi Perawatan</strong> — Maskapai menjadwalkan perawatan berdasarkan prediksi ilmiah, bukan sekadar perkiraan. Hemat biaya dan waktu operasional!</li>
-      <li><strong>Desain Pesawat Lebih Optimal</strong> — Insinyur merancang struktur lebih ringan tanpa mengorbankan keselamatan, membuat pesawat lebih hemat bahan bakar.</li>
+      <li>Komponen hanya diganti <strong>saat benar-benar diperlukan</strong></li>
+      <li>Interval perawatan bisa diperpanjang tanpa mengorbankan keselamatan</li>
+      <li>Penghematan biaya perawatan mencapai <strong>jutaan dolar per tahun</strong> untuk setiap maskapai besar</li>
     </ul>
+
+    <h3>3. Desain Pesawat Lebih Ringan & Efisien</h3>
+    <p>
+      Karena insinyur sekarang bisa <strong>memprediksi</strong> perilaku retakan dengan tepat, mereka tidak perlu lagi "over-design" (membuat struktur terlalu tebal dan berat hanya untuk jaga-jaga). Struktur bisa dibuat <strong>lebih ringan</strong> tanpa mengorbankan keselamatan. Hasilnya:
+    </p>
+    <ul>
+      <li>Pesawat lebih hemat bahan bakar (setiap kilogram pengurangan berat = penghematan bahan bakar yang signifikan selama umur pesawat)</li>
+      <li>Emisi karbon berkurang</li>
+      <li>Kapasitas penumpang atau kargo bisa ditingkatkan</li>
+    </ul>
+
+    <h3>4. Standarisasi Global</h3>
+    <p>
+      Metode Habibie diadopsi sebagai standar oleh:
+    </p>
+    <ul>
+      <li><strong>FAA (Federal Aviation Administration)</strong> — otoritas penerbangan Amerika Serikat</li>
+      <li><strong>EASA (European Union Aviation Safety Agency)</strong> — otoritas penerbangan Eropa</li>
+      <li><strong>ICAO (International Civil Aviation Organization)</strong> — badan PBB untuk penerbangan sipil</li>
+    </ul>
+    <p>
+      Setiap pesawat baru yang ingin mendapatkan sertifikasi kelaikan udara <strong>wajib</strong> memenuhi analisis Damage Tolerance sesuai metode yang dikembangkan Habibie.
+    </p>
   </div>
 
-  <!-- SLIDE 5: DAMPAK 2 - FIRZAN -->
+  <!-- ==================== SLIDE 5: DAMPAK 2 - FIRZAN ==================== -->
   <div class="card">
     <div class="tag-pembicara">
       <span class="dot"></span> Disampaikan oleh: Firzan Al Nashih
     </div>
-    <h2>🏆 Warisan Abadi B.J. Habibie</h2>
+    <h2>🏆 Warisan Abadi & Inspirasi untuk Indonesia</h2>
+    
+    <h3>🇮🇩 Bukti Nyata: Pesawat N-250 Gatotkaca</h3>
+    <p>
+      Puncak dari seluruh pengetahuan dan pengalaman Habibie diwujudkan dalam proyek <strong>N-250 Gatotkaca</strong> — pesawat turboprop regional yang 100% dirancang, dihitung, dan dibuat oleh putra-putri Indonesia di bawah pimpinan Habibie di IPTN (Bandung).
+    </p>
+    <p>
+      N-250 menerapkan <strong>teknologi fly-by-wire</strong> (kontrol penerbangan elektronik) — menjadikannya pesawat turboprop pertama di dunia yang menggunakan sistem ini, bahkan sebelum pesawat sekelasnya dari pabrikan Barat. Semua analisis struktur dan perhitungan fatik menggunakan metode Habibie.
+    </p>
+    <p>
+      N-250 berhasil terbang perdana pada <strong>10 Agustus 1995</strong> — bertepatan dengan Hari Kebangkitan Teknologi Nasional — dan mendarat dengan selamat. Ini adalah momen bersejarah yang membuktikan bahwa <strong>Indonesia mampu membuat pesawat terbang sendiri</strong>.
+    </p>
+
+    <h3>🔬 Penerapan di Luar Penerbangan</h3>
+    <p>Metode analisis retakan Habibie kini digunakan di berbagai bidang teknik:</p>
     <ul>
-      <li><strong>Standar Industri Global</strong> — Metode <em>Damage Tolerance</em> menjadi standar wajib sertifikasi kelaikan udara semua pesawat modern di dunia (FAA & EASA).</li>
-      <li><strong>Kebanggaan Nasional</strong> — Membuktikan putra-putri Indonesia mampu berkontribusi di puncak ilmu pengetahuan dunia! 🇮🇩</li>
-      <li><strong>Inspirasi Abadi</strong> — Semangat Habibie terus menginspirasi generasi muda. Pesawat N-250 Gatotkaca adalah bukti nyata pemikiran beliau.</li>
+      <li><strong>Konstruksi jembatan</strong> — memprediksi umur fatik kabel dan struktur baja</li>
+      <li><strong>Industri otomotif</strong> — analisis sasis dan komponen mesin</li>
+      <li><strong>Pembangkit listrik</strong> — turbin dan pipa bertekanan tinggi</li>
+      <li><strong>Industri perminyakan</strong> — platform lepas pantai dan jaringan pipa</li>
+      <li><strong>Alat kesehatan</strong> — implan dan prostesis yang menerima beban berulang</li>
     </ul>
+
+    <h3>💎 Nilai-Nilai yang Diwariskan</h3>
+    <ul>
+      <li><strong>Cinta tanah air</strong> — Habibie memilih pulang ke Indonesia dan membangun industri strategis, meninggalkan karier gemilang di Jerman</li>
+      <li><strong>Keunggulan akademik</strong> — membuktikan bahwa dengan pendidikan dan kerja keras, orang Indonesia bisa bersaing di level tertinggi dunia</li>
+      <li><strong>Integritas ilmiah</strong> — semua perhitungan dan desain dilakukan dengan ketelitian dan kejujuran tanpa kompromi terhadap keselamatan</li>
+      <li><strong>Visi jangka panjang</strong> — membangun fondasi teknologi untuk kemandirian bangsa</li>
+    </ul>
+
+    <h3>📝 Kutipan Terkenal B.J. Habibie</h3>
+    <div class="quote-box" style="margin-top: 15px;">
+      <div class="quote-icon">💬</div>
+      <p>
+        <em>"Kesempurnaan dalam teknologi bukanlah ketika tidak ada lagi yang bisa ditambahkan, tetapi ketika tidak ada lagi yang bisa dikurangi."</em>
+      </p>
+      <p style="font-size: 14px; color: #aaa; margin-top: 8px;">— B.J. Habibie</p>
+    </div>
   </div>
 
-  <!-- QUOTE PENUTUP -->
+  <!-- ==================== QUOTE PENUTUP ==================== -->
   <div class="quote-box">
-    <div class="quote-icon">💬</div>
+    <div class="quote-icon">🌟</div>
     <p>
-      "Inti dari penemuan B.J. Habibie bukan hanya tentang retakan, tetapi tentang <strong>mengubah krisis menjadi peluang melalui ilmu pengetahuan</strong>. Beliau mengajarkan kita bahwa dengan perhitungan yang tepat, kita dapat memprediksi masa depan dan mencegah bencana."
+      "Inti dari penemuan B.J. Habibie bukan hanya tentang retakan atau rumus matematika, tetapi tentang <strong>mengubah krisis menjadi peluang melalui ilmu pengetahuan</strong>. Beliau mengajarkan kita bahwa dengan perhitungan yang tepat, kita dapat memprediksi masa depan, mencegah bencana, dan membangun peradaban yang lebih maju."
     </p>
   </div>
 
@@ -525,7 +907,7 @@ footer .kelompok-name {
 <!-- FOOTER -->
 <footer>
   <p>© 2026 <span class="kelompok-name">Kelompok 9C</span> — Presentasi B.J. Habibie</p>
-  <p>Thufail · Karim · Hanif · Arya · Firzan</p>
+  <p>👤 Thufail Khairul Fatihin | 👤 Karim Abdul Majid | 👤 Hanif Abdurrahman Syukur | 👤 Arya Al Fatih | 👤 Firzan Al Nashih</p>
 </footer>
 
 <!-- JAVASCRIPT -->
@@ -537,7 +919,6 @@ let drawing = false;
 let mode = 'draw';
 let color = document.getElementById('colorPicker').value;
 
-// Resize canvas
 function resizeCanvas() {
   canvas.width = canvas.offsetWidth;
   canvas.height = canvas.offsetHeight;
@@ -545,12 +926,10 @@ function resizeCanvas() {
 resizeCanvas();
 window.addEventListener('resize', resizeCanvas);
 
-// Set mode
 function setMode(m) {
   mode = m;
 }
 
-// Color picker
 document.getElementById('colorPicker').addEventListener('input', (e) => {
   color = e.target.value;
 });
@@ -648,16 +1027,18 @@ function drawGrid() {
   ctx.lineTo(canvas.width / 2, canvas.height);
   ctx.stroke();
 
-  // Label
+  // Label sumbu
   ctx.fillStyle = '#999';
-  ctx.font = '12px Roboto Slab';
-  ctx.fillText('Siklus Tekanan (N)', canvas.width - 130, canvas.height / 2 + 20);
-  ctx.fillText('Panjang Retakan (a)', canvas.width / 2 + 10, 20);
+  ctx.font = 'bold 13px Roboto Slab';
+  ctx.fillText('Siklus Tekanan (N) — waktu →', canvas.width - 220, canvas.height / 2 + 22);
+  ctx.fillText('Panjang Retakan', canvas.width / 2 + 12, 18);
+  ctx.fillText('a (mm)', canvas.width / 2 + 12, 36);
 }
 
 function drawGraph() {
   drawGrid();
 
+  // Kurva pertumbuhan retakan (parabola — visualisasi sederhana Hukum Paris)
   ctx.strokeStyle = '#ff0044';
   ctx.lineWidth = 3;
   ctx.beginPath();
@@ -675,12 +1056,12 @@ function drawGraph() {
   }
   ctx.stroke();
 
-  // Label grafik
+  // Label kurva
   ctx.fillStyle = '#ff0044';
   ctx.font = 'bold 14px Roboto Slab';
-  ctx.fillText('Kurva Pertumbuhan Retakan', canvas.width / 2 + 40, 55);
+  ctx.fillText('Kurva da/dN (Paris Law)', canvas.width / 2 + 50, 50);
   
-  // Garis batas kritis
+  // Garis batas kritis (a_cr)
   ctx.strokeStyle = '#ff8800';
   ctx.lineWidth = 2;
   ctx.setLineDash([6, 6]);
@@ -691,8 +1072,14 @@ function drawGraph() {
   ctx.setLineDash([]);
   
   ctx.fillStyle = '#ff8800';
-  ctx.font = 'bold 12px Roboto Slab';
-  ctx.fillText('Batas Kritis', 10, canvas.height / 2 - 108);
+  ctx.font = 'bold 13px Roboto Slab';
+  ctx.fillText('a_cr (Retakan Kritis)', 12, canvas.height / 2 - 108);
+  
+  // Keterangan
+  ctx.fillStyle = '#666';
+  ctx.font = '11px Roboto Slab';
+  ctx.fillText('Retakan tumbuh lambat →', 30, canvas.height - 30);
+  ctx.fillText('← Retakan tumbuh cepat (berbahaya)', canvas.width - 220, canvas.height - 30);
 }
 </script>
 
